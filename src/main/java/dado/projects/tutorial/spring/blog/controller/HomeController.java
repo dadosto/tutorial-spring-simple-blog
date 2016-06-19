@@ -10,20 +10,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author vstojov
  */
 @Controller
-@RequestMapping({"/", "/home"})
+@RequestMapping({ "/", "/home" })
 public class HomeController {
-	
-	/**
-	 * Whenever an HTTP GET request comes in for /, the home() method will be called.
-	 * - request path "/"
-	 * - type of (HTTP) request method "GET"
-	 * 
-	 * @return the name of the view that should be rendered.
-	 * The dispatcher servlet will ask the view resolver to resolve this logical view
-	 * name into an actual view.
-	 */
-	@RequestMapping(method = RequestMethod.GET)
-	public String home() {
-		return "home";
-	}
+
+  /**
+   * Whenever an HTTP GET request comes in for /, the home() method will be
+   * called. - request path "/" - type of (HTTP) request method "GET"
+   * 
+   * @return the name of the view that should be rendered. The dispatcher
+   *         servlet will ask the view resolver to resolve this logical view
+   *         name into an actual view.
+   */
+  @RequestMapping(method = RequestMethod.GET)
+  public String home() {
+    return "home";
+  }
+
+  @RequestMapping(value = "/error", method = RequestMethod.GET)
+  public String causeError() {
+    throw new RuntimeException("Error!");
+  }
+
 }

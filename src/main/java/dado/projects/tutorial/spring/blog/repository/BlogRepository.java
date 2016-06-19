@@ -17,5 +17,12 @@ public interface BlogRepository {
 	 * @param count - how many BlogPosts to be fetched from the repository
 	 * @return the result list of BlogPosts
 	 */
-	List<BlogPost> findBlogs(long max, int count);
+  List<BlogPost> findBlogPosts(long max, int count);
+  
+  /**
+   * Returns a blog post by its id.
+   * @param id - the id of the blog post
+   * @return - a BlogPost object with the specified id
+   */
+  BlogPost getBlogPostById(Long id);
 }

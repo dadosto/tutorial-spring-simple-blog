@@ -7,7 +7,8 @@
 </head>
 <body>
 	<h1>Simple Blog</h1>
-	<a href="<c:url value="/posts" />">Blog posts</a> |
+	<div>${logged-in}</div>
+	<a href="<c:url value="/blogposts" />">Blog posts</a> |
 	<a href="<c:url value="/blog/register" />">Sign-Up</a>
 </body>
 </html>

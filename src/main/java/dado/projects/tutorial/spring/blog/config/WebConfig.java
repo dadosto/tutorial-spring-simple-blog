@@ -9,7 +9,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import dado.projects.tutorial.spring.blog.controller.HomeController;
+import dado.projects.tutorial.spring.blog.controller.ControllersPackage;
+import dado.projects.tutorial.spring.blog.repository.BlogRepository;
 
 /**
  * Web-configuration.
@@ -18,21 +19,23 @@ import dado.projects.tutorial.spring.blog.controller.HomeController;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = HomeController.class)
-public class WebConfig extends WebMvcConfigurerAdapter{
+@ComponentScan(basePackageClasses = {
+    ControllersPackage.class,
+    BlogRepository.class})
+public class WebConfig extends WebMvcConfigurerAdapter {
 
-	@Bean
-	public ViewResolver viewResolver() {
-		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/views/");
-		resolver.setSuffix(".jsp");
-		resolver.setExposeContextBeansAsAttributes(true);
-		return resolver;
-	}
-	
-	@Override 
-	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		configurer.enable();
-	}
-	
+  @Bean
+  public ViewResolver viewResolver() {
+    InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+    resolver.setPrefix("/WEB-INF/views/");
+    resolver.setSuffix(".jsp");
+    resolver.setExposeContextBeansAsAttributes(true);
+    return resolver;
+  }
+
+  @Override
+  public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+    configurer.enable();
+  }
+
 }
